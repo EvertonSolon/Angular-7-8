@@ -8,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventBindingComponent implements OnInit {
 
-
+  // string myButton = "My button 10/06/2022";
   buttonName = "My button 10/06/2022";
   i = 0;
+  spinnerMode = "determinate";
+  spinnerValue = "0";
+  btnEnable = true;
+
   constructor() { }
 
   ngOnInit() {
@@ -21,11 +25,18 @@ export class EventBindingComponent implements OnInit {
   }
 
   disable(){
+    this.btnEnable = false;
+    this.spinnerMode = "indeterminate";
+    setTimeout( () => {
+      this.btnEnable = true;
+      this.spinnerMode = "determinate";
+    }, 3000);
   }
 
   inc(){
     this.i++;
     this.buttonName = "It was clicked " + this.i + " times!";
+    this.spinnerValue = this.i.toString();
   }
 
 
